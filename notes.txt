@@ -1,0 +1,31 @@
+Notas dos modelos até o momento:
+
+Treinamento 1: 
+- Acurácia: 0.923
+- F1 Score: 0.924
+- ROC 0.978
+
+
+Colocar o save_history abaixo do model.save
+save_history(history, '01_treino_base')
+
+Colocar o load_history abaixo do load_model
+history_dict = load_history('01_treino_base')
+
+Mudar o plot_accuracy para reconhecer o history_dict
+
+
+No salvamento
+
+filename = '01_treino_base'
+nome_modelo.save(f'saved_models/{filename}.h5')
+save_history(history, filename)
+
+No carregamento
+filename = '01_treino_base'
+novo_nome_modelo = load_model(f'saved_models/{filename}.h5')
+history_dict_over = load_history(filename)
+
+Lá em baixo, no plot, fazer isso:
+
+plot_accuracy(history_dict, epochs)
